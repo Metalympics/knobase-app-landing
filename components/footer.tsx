@@ -1,72 +1,113 @@
 import { Github, Twitter } from "lucide-react";
 
+const footerNav = {
+  Product: [
+    { label: "Features", href: "#features" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Changelog", href: "#" },
+    { label: "Roadmap", href: "#" },
+  ],
+  Company: [
+    { label: "About", href: "#" },
+    { label: "Blog", href: "#blog" },
+    { label: "Careers", href: "#" },
+    { label: "Contact", href: "#" },
+  ],
+  Resources: [
+    { label: "Docs", href: "#docs" },
+    { label: "API", href: "#" },
+    { label: "Community", href: "#" },
+    { label: "Templates", href: "#" },
+  ],
+  Legal: [
+    { label: "Privacy", href: "#" },
+    { label: "Terms", href: "#" },
+    { label: "Security", href: "#" },
+  ],
+};
+
 export function Footer() {
   return (
-    <footer className="border-t bg-white px-4 py-12 sm:px-6 lg:px-8">
+    <footer className="border-t border-neutral-200 bg-white px-4 pt-16 pb-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
-          <div>
-            <a href="/" className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-[#650BD8]" />
-              <span className="text-lg font-semibold">Knobase</span>
+        {/* Top grid */}
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-6">
+          {/* Brand — spans 2 cols */}
+          <div className="lg:col-span-2">
+            <a href="/" className="flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#650BD8]">
+                <span className="text-xs font-bold text-white">K</span>
+              </div>
+              <span className="text-base font-semibold tracking-tight">Knobase</span>
             </a>
-            <p className="mt-4 text-sm text-neutral-600">
-              The workspace where humans and AI collaborate.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-500">
+              The workspace where humans and AI agents collaborate in real-time.
             </p>
-            <div className="mt-4 flex gap-4">
-              <a href="#" className="text-neutral-400 hover:text-neutral-600">
-                <Twitter size={20} />
+            <div className="mt-5 flex gap-3">
+              <a
+                href="#"
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-neutral-200 text-neutral-400 transition-colors hover:border-neutral-300 hover:text-neutral-600"
+                aria-label="Twitter"
+              >
+                <Twitter size={15} />
               </a>
-              <a href="#" className="text-neutral-400 hover:text-neutral-600">
-                <Github size={20} />
+              <a
+                href="#"
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-neutral-200 text-neutral-400 transition-colors hover:border-neutral-300 hover:text-neutral-600"
+                aria-label="GitHub"
+              >
+                <Github size={15} />
               </a>
             </div>
+
+            {/* Cross-link to Knobase AI */}
+            <a
+              href="https://knobase.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-lg border border-[#650BD8]/20 bg-[#650BD8]/5 px-3 py-2 text-xs font-medium text-[#650BD8] transition-colors hover:bg-[#650BD8]/10"
+            >
+              Knobase AI — Build agents without code →
+            </a>
           </div>
 
-          {/* Product */}
-          <div>
-            <h4 className="font-semibold">Product</h4>
-            <ul className="mt-4 space-y-2 text-sm text-neutral-600">
-              <li><a href="#features" className="hover:text-neutral-900">Features</a></li>
-              <li><a href="#pricing" className="hover:text-neutral-900">Pricing</a></li>
-              <li><a href="#" className="hover:text-neutral-900">Changelog</a></li>
-              <li><a href="#" className="hover:text-neutral-900">Roadmap</a></li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="font-semibold">Resources</h4>
-            <ul className="mt-4 space-y-2 text-sm text-neutral-600">
-              <li><a href="#" className="hover:text-neutral-900">Documentation</a></li>
-              <li><a href="#" className="hover:text-neutral-900">API</a></li>
-              <li><a href="#" className="hover:text-neutral-900">Community</a></li>
-              <li><a href="#" className="hover:text-neutral-900">Templates</a></li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold">Company</h4>
-            <ul className="mt-4 space-y-2 text-sm text-neutral-600">
-              <li><a href="#" className="hover:text-neutral-900">About</a></li>
-              <li><a href="#" className="hover:text-neutral-900">Blog</a></li>
-              <li><a href="#" className="hover:text-neutral-900">Careers</a></li>
-              <li><a href="#" className="hover:text-neutral-900">Contact</a></li>
-            </ul>
-          </div>
+          {/* Nav columns */}
+          {Object.entries(footerNav).map(([section, links]) => (
+            <div key={section}>
+              <h4 className="text-sm font-semibold text-[#111111]">{section}</h4>
+              <ul className="mt-4 space-y-2.5">
+                {links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-neutral-500 transition-colors hover:text-neutral-900"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* Bottom */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 sm:flex-row">
-          <p className="text-sm text-neutral-500">
-            © {new Date().getFullYear()} Knobase. All rights reserved.
+        {/* Bottom bar */}
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-neutral-200 pt-8 sm:flex-row sm:items-center">
+          <p className="text-sm text-neutral-400">
+            © {new Date().getFullYear()} Knobase, Inc. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm text-neutral-500">
-            <a href="#" className="hover:text-neutral-900">Privacy</a>
-            <a href="#" className="hover:text-neutral-900">Terms</a>
-            <a href="https://knobase.ai" className="hover:text-neutral-900">Knobase AI →</a>
+          <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-400">
+            <a href="#" className="transition-colors hover:text-neutral-700">Privacy</a>
+            <a href="#" className="transition-colors hover:text-neutral-700">Terms</a>
+            <a href="#" className="transition-colors hover:text-neutral-700">Security</a>
+            <a
+              href="https://knobase.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-neutral-700"
+            >
+              Knobase AI →
+            </a>
           </div>
         </div>
       </div>

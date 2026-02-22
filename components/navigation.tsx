@@ -2,45 +2,61 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const navLinks = [
+  { href: "#features", label: "Features" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#docs", label: "Docs" },
+  { href: "#blog", label: "Blog" },
+];
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/80 backdrop-blur-sm">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-[#650BD8]" />
-          <span className="text-lg font-semibold">Knobase</span>
+        <a href="/" className="flex items-center gap-2.5 shrink-0">
+          <div className="h-8 w-8 rounded-lg bg-[#650BD8] flex items-center justify-center">
+            <span className="text-white text-xs font-bold">K</span>
+          </div>
+          <span className="text-base font-semibold tracking-tight">Knobase</span>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden items-center gap-8 md:flex">
-          <a href="#features" className="text-sm text-neutral-600 hover:text-neutral-900">
-            Features
-          </a>
-          <a href="#pricing" className="text-sm text-neutral-600 hover:text-neutral-900">
-            Pricing
-          </a>
-          <a href="#docs" className="text-sm text-neutral-600 hover:text-neutral-900">
-            Docs
-          </a>
+        <div className="hidden items-center gap-7 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm text-neutral-600 transition-colors hover:text-neutral-900"
+            >
+              {link.label}
+            </a>
+          ))}
           <a
             href="https://knobase.ai"
-            className="text-sm text-neutral-500 hover:text-neutral-900"
+            className="text-sm text-[#650BD8] transition-colors hover:text-[#5209b0]"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Looking for Knobase AI? →
+            Looking for Knobase AI (no-code agents)? →
           </a>
         </div>
 
-        {/* CTA */}
-        <div className="hidden items-center gap-4 md:flex">
+        {/* Desktop CTA */}
+        <div className="hidden items-center gap-3 md:flex">
           <a
             href="#"
-            className="rounded-lg bg-[#650BD8] px-4 py-2 text-sm font-medium text-white hover:bg-[#5209b0]"
+            className="rounded-lg border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-50"
+          >
+            Sign in
+          </a>
+          <a
+            href="#"
+            className="rounded-lg bg-[#650BD8] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#5209b0]"
           >
             Get started
           </a>
@@ -48,44 +64,62 @@ export function Navigation() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden"
+          className="flex items-center justify-center rounded-md p-1 text-neutral-600 hover:text-neutral-900 md:hidden"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="border-t bg-white px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-4">
-            <a href="#features" className="text-sm text-neutral-600">
-              Features
-            </a>
-            <a href="#pricing" className="text-sm text-neutral-600">
-              Pricing
-            </a>
-            <a href="#docs" className="text-sm text-neutral-600">
-              Docs
-            </a>
-            <a
-              href="https://knobase.ai"
-              className="text-sm text-neutral-500"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Looking for Knobase AI? →
-            </a>
-            <a
-              href="#"
-              className="rounded-lg bg-[#650BD8] px-4 py-2 text-center text-sm font-medium text-white"
-            >
-              Get started
-            </a>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="overflow-hidden border-t border-neutral-200 bg-white md:hidden"
+          >
+            <div className="flex flex-col gap-1 px-4 py-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-md px-3 py-2 text-sm text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="https://knobase.ai"
+                className="rounded-md px-3 py-2 text-sm text-[#650BD8] hover:bg-neutral-50"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Looking for Knobase AI? →
+              </a>
+              <div className="mt-3 flex flex-col gap-2 border-t border-neutral-100 pt-3">
+                <a
+                  href="#"
+                  className="rounded-lg border border-neutral-200 px-4 py-2.5 text-center text-sm font-medium text-neutral-700 hover:bg-neutral-50"
+                >
+                  Sign in
+                </a>
+                <a
+                  href="#"
+                  className="rounded-lg bg-[#650BD8] px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-[#5209b0]"
+                >
+                  Get started
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
