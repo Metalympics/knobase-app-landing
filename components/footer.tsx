@@ -3,25 +3,24 @@ import { Github, Twitter } from "lucide-react";
 const footerNav = {
   Product: [
     { label: "Features", href: "#features" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Roadmap", href: "/roadmap" },
     { label: "Changelog", href: "#" },
-    { label: "Roadmap", href: "#" },
+  ],
+  Integrations: [
+    { label: "OpenClaw", href: "/integrations/openclaw" },
+    { label: "ChatGPT", href: "#" },
+    { label: "Claude", href: "#" },
+    { label: "MCP agents", href: "#" },
   ],
   Company: [
-    { label: "About", href: "#" },
-    { label: "Blog", href: "#blog" },
+    { label: "About", href: "/about" },
     { label: "Careers", href: "#" },
     { label: "Contact", href: "#" },
   ],
-  Resources: [
-    { label: "Docs", href: "#docs" },
-    { label: "API", href: "#" },
-    { label: "Community", href: "#" },
-    { label: "Templates", href: "#" },
-  ],
   Legal: [
-    { label: "Privacy", href: "#" },
-    { label: "Terms", href: "#" },
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
     { label: "Security", href: "#" },
   ],
 };
@@ -38,7 +37,9 @@ export function Footer() {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#650BD8]">
                 <span className="text-xs font-bold text-white">K</span>
               </div>
-              <span className="text-base font-semibold tracking-tight">Knobase</span>
+              <span className="text-base font-semibold tracking-tight">
+                Knobase
+              </span>
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-500">
               The workspace where humans and AI agents collaborate in real-time.
@@ -59,22 +60,14 @@ export function Footer() {
                 <Github size={15} />
               </a>
             </div>
-
-            {/* Cross-link to Knobase AI */}
-            <a
-              href="https://knobase.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-lg border border-[#650BD8]/20 bg-[#650BD8]/5 px-3 py-2 text-xs font-medium text-[#650BD8] transition-colors hover:bg-[#650BD8]/10"
-            >
-              Knobase AI — Build agents without code →
-            </a>
           </div>
 
           {/* Nav columns */}
           {Object.entries(footerNav).map(([section, links]) => (
             <div key={section}>
-              <h4 className="text-sm font-semibold text-[#111111]">{section}</h4>
+              <h4 className="text-sm font-semibold text-[#111111]">
+                {section}
+              </h4>
               <ul className="mt-4 space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
@@ -97,16 +90,20 @@ export function Footer() {
             © {new Date().getFullYear()} Knobase, Inc. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-400">
-            <a href="#" className="transition-colors hover:text-neutral-700">Privacy</a>
-            <a href="#" className="transition-colors hover:text-neutral-700">Terms</a>
-            <a href="#" className="transition-colors hover:text-neutral-700">Security</a>
             <a
-              href="https://knobase.ai"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/privacy"
               className="transition-colors hover:text-neutral-700"
             >
-              Knobase AI →
+              Privacy
+            </a>
+            <a
+              href="/terms"
+              className="transition-colors hover:text-neutral-700"
+            >
+              Terms
+            </a>
+            <a href="#" className="transition-colors hover:text-neutral-700">
+              Security
             </a>
           </div>
         </div>

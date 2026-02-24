@@ -32,7 +32,10 @@ export function Hero() {
             Built for OpenClaw
           </motion.div>
 
-          <h1 className="text-balance text-5xl font-bold tracking-tight text-[#111111] sm:text-6xl lg:text-7xl" style={{ lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+          <h1
+            className="text-balance text-5xl font-bold tracking-tight text-[#111111] sm:text-6xl lg:text-7xl"
+            style={{ lineHeight: 1.1, letterSpacing: "-0.02em" }}
+          >
             Work together.
             <br />
             <span className="text-[#650BD8]">Humans and agents,</span>
@@ -41,8 +44,9 @@ export function Hero() {
           </h1>
 
           <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-neutral-500 sm:text-xl">
-            Knobase is the workspace where your team collaborates in real-time —
-            and your AI agent has a seat at the table. Not a chatbot. A teammate.
+            Knobase is the workspace where your team and your AI agents
+            collaborate in real-time. Bring any agent you&apos;ve built —
+            Knobase gives it a seat at the table.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -51,7 +55,10 @@ export function Hero() {
               className="group inline-flex items-center gap-2 rounded-lg bg-[#650BD8] px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#5209b0]"
             >
               Start collaborating — Free
-              <ArrowRight size={17} className="transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight
+                size={17}
+                className="transition-transform group-hover:translate-x-0.5"
+              />
             </a>
             <a
               href="#features"
@@ -101,7 +108,13 @@ export function Hero() {
               <div className="flex">
                 <div className="hidden w-48 shrink-0 border-r border-neutral-100 bg-neutral-50 p-4 sm:block">
                   <div className="space-y-1">
-                    {["Product Spec", "Roadmap", "Meeting Notes", "Engineering Wiki", "Design Tokens"].map((item, i) => (
+                    {[
+                      "Product Spec",
+                      "Roadmap",
+                      "Meeting Notes",
+                      "Engineering Wiki",
+                      "Design Tokens",
+                    ].map((item, i) => (
                       <div
                         key={item}
                         className={`rounded-md px-2 py-1.5 text-xs ${i === 0 ? "bg-[#650BD8]/10 font-medium text-[#650BD8]" : "text-neutral-500"}`}
@@ -113,7 +126,10 @@ export function Hero() {
                 </div>
 
                 {/* Editor area */}
-                <div className="flex-1 px-6 py-6 sm:px-10" style={{ minHeight: "300px" }}>
+                <div
+                  className="flex-1 px-6 py-6 sm:px-10"
+                  style={{ minHeight: "300px" }}
+                >
                   <div className="mb-6">
                     <div className="h-7 w-64 rounded bg-neutral-100" />
                     <div className="mt-1 h-4 w-32 rounded bg-neutral-50" />
@@ -130,7 +146,9 @@ export function Hero() {
                         <div className="h-4 w-px bg-[#10b981]" />
                         <div className="flex items-center gap-1 rounded bg-[#10b981] px-1.5 py-0.5">
                           <Bot size={9} className="text-white" />
-                          <span className="text-[9px] font-medium text-white">@claw</span>
+                          <span className="text-[9px] font-medium text-white">
+                            @claw
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -157,7 +175,8 @@ export function Hero() {
                           <span>@claw is writing...</span>
                         </div>
                         <p className="mt-1.5 max-w-[180px] text-[10px] leading-relaxed text-neutral-500">
-                          Drafting the API spec section based on your meeting notes...
+                          Drafting the API spec section based on your meeting
+                          notes...
                         </p>
                       </div>
                     </div>
@@ -170,7 +189,9 @@ export function Hero() {
                       <div className="flex items-center gap-1">
                         <div className="flex items-center gap-1 rounded bg-[#650BD8] px-1.5 py-0.5">
                           <Users size={9} className="text-white" />
-                          <span className="text-[9px] font-medium text-white">You</span>
+                          <span className="text-[9px] font-medium text-white">
+                            You
+                          </span>
                         </div>
                         <div className="h-4 w-px bg-[#650BD8]" />
                       </div>

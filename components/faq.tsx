@@ -11,44 +11,56 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "Is Knobase replacing Knobase AI?",
+    question: "What's the difference between Plus and Business?",
     answer:
-      "No. Knobase AI is our no-code agent builder (1000+ active users). Knobase is our collaboration workspace. They work together — agents built on Knobase AI can access knowledge from your Knobase workspace instantly.",
+      "Plus ($9.99) gives you unlimited pages, basic sharing, and 2 AI agents per team member. Business ($29.99) adds advanced sharing controls (passwords, expiring links), full AI features from Knobase AI (document summaries, smart search), admin controls, SSO, and audit logs for organizations.",
   },
   {
-    question: "Can I use Knobase without Knobase AI?",
+    question: "Do I pay for AI agents?",
     answer:
-      "Absolutely. Knobase is a powerful collaboration tool on its own. The Knobase AI integration is optional — but powerful if you want agents that actually know your team's knowledge.",
+      "No. You only pay for human team members. Each human gets 2 AI agents on Plus, 10 on Business — at no extra cost. You bring your own AI (OpenClaw, Claude via MCP, etc.). We don't charge for AI compute.",
   },
   {
-    question: "How is this different from Notion or Google Docs?",
+    question: "What happens when I hit 20 pages on Free?",
     answer:
-      "Three things: 1) Native AI agent collaboration with cursors and real-time presence, 2) In-line @mentions that trigger actual agents, not just comments, 3) Automatic knowledge base creation for external AI agents via Knobase AI integration.",
+      "You'll need to upgrade to Plus for unlimited pages. 20 pages is designed for a meaningful try-out — enough for your personal workspace plus testing with your OpenClaw agent.",
   },
   {
-    question: "Who owns the data?",
+    question: "Why 20 pages on Free?",
     answer:
-      "You do. Enterprise-grade security, SOC 2 compliant infrastructure, and the option to self-host for maximum control.",
+      "Two reasons: 1) It matches our AI-first design — agents work better with focused, chunked content than massive documents. 2) It lets you meaningfully try Knobase before committing.",
   },
   {
-    question: "What's the pricing?",
+    question: "Can I share pages with people outside my workspace?",
     answer:
-      "Free tier for individuals and small teams. Pro plans for teams needing advanced permissions, audit logs, and priority support. Enterprise plans for custom deployments and SSO.",
+      "Free: Private only. Plus: Public read-only links. Business: Full control — read/write links, passwords, expiring links, and guest access.",
   },
   {
-    question: "Can agents edit documents or just suggest?",
-    answer:
-      "Both. You control the permission level per agent — some can suggest (comment mode), others can edit directly. It's up to you and your team's workflow.",
+    question: "Can I upgrade or downgrade anytime?",
+    answer: "Yes. Changes take effect at your next billing cycle.",
   },
   {
-    question: "How does the \"jump to agent\" feature work?",
-    answer:
-      "When your agent is working in a document, you see its cursor in real-time. Click the cursor or the \"Jump to Claw\" button, and the viewport instantly scrolls to where your agent is actively editing. No hunting, no scrolling — just context.",
+    question: "Is there a discount for annual billing?",
+    answer: "Yes. Save 20% when you pay annually on Plus and Business plans.",
   },
   {
-    question: "Is this open source?",
+    question: "Do you offer refunds?",
     answer:
-      "Parts of it. The core collaboration engine and agent protocols are open source. The hosted version adds enterprise features, managed infrastructure, and Knobase AI integration.",
+      "Plus and Business have 14-day free trials. We don't offer refunds after billing starts, but you can cancel anytime and keep access until your billing period ends.",
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "All major credit cards. Enterprise customers can pay via invoice.",
+  },
+  {
+    question: "How does page history work?",
+    answer:
+      "Free: 7 days. Plus: 30 days. Business: 90 days. Enterprise: Unlimited. After the period, older versions are removed — upgrade anytime to extend history.",
+  },
+  {
+    question: "Is my data secure?",
+    answer:
+      "Yes. Cloud plans run on SOC 2 Type II certified infrastructure. Enterprise offers self-hosted deployment — run Knobase on your own servers for full data control.",
   },
 ];
 
@@ -68,9 +80,15 @@ function FAQItem({ item, index }: { item: FAQItem; index: number }) {
         className="flex w-full items-center justify-between gap-4 py-5 text-left"
         aria-expanded={isOpen}
       >
-        <span className="text-[15px] font-medium text-[#111111]">{item.question}</span>
+        <span className="text-[15px] font-medium text-[#111111]">
+          {item.question}
+        </span>
         <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-neutral-50 text-neutral-500 transition-colors hover:bg-neutral-100">
-          {isOpen ? <Minus size={14} strokeWidth={2.5} /> : <Plus size={14} strokeWidth={2.5} />}
+          {isOpen ? (
+            <Minus size={14} strokeWidth={2.5} />
+          ) : (
+            <Plus size={14} strokeWidth={2.5} />
+          )}
         </span>
       </button>
 
@@ -84,7 +102,9 @@ function FAQItem({ item, index }: { item: FAQItem; index: number }) {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-[15px] leading-relaxed text-neutral-500">{item.answer}</p>
+            <p className="pb-5 text-[15px] leading-relaxed text-neutral-500">
+              {item.answer}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -94,12 +114,17 @@ function FAQItem({ item, index }: { item: FAQItem; index: number }) {
 
 export function FAQ() {
   return (
-    <section id="faq" className="border-t border-neutral-200 px-4 py-24 sm:px-6 lg:px-8">
+    <section
+      id="faq"
+      className="border-t border-neutral-200 px-4 py-24 sm:px-6 lg:px-8"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-16 lg:grid-cols-3">
           {/* Left column — header */}
           <div className="lg:sticky lg:top-24 lg:self-start">
-            <p className="mb-3 text-sm font-medium uppercase tracking-wider text-[#650BD8]">FAQ</p>
+            <p className="mb-3 text-sm font-medium uppercase tracking-wider text-[#650BD8]">
+              FAQ
+            </p>
             <h2
               className="text-balance text-3xl font-semibold tracking-tight text-[#111111]"
               style={{ lineHeight: 1.2 }}
@@ -108,7 +133,10 @@ export function FAQ() {
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-neutral-500">
               Can't find what you're looking for?{" "}
-              <a href="#" className="font-medium text-[#650BD8] hover:text-[#5209b0] underline underline-offset-2">
+              <a
+                href="#"
+                className="font-medium text-[#650BD8] hover:text-[#5209b0] underline underline-offset-2"
+              >
                 Chat with us
               </a>
               .

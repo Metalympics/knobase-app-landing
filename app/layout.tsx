@@ -37,6 +37,7 @@ export default function RootLayout({
       <body
         className="min-h-screen antialiased"
         style={{ fontFamily: 'var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
+        suppressHydrationWarning
       >
         {children}
       </body>

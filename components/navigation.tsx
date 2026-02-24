@@ -6,9 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { href: "#features", label: "Features" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#docs", label: "Docs" },
-  { href: "#blog", label: "Blog" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/roadmap", label: "Roadmap" },
+  { href: "/about", label: "About" },
 ];
 
 export function Navigation() {
@@ -22,7 +22,9 @@ export function Navigation() {
           <div className="h-8 w-8 rounded-lg bg-[#650BD8] flex items-center justify-center">
             <span className="text-white text-xs font-bold">K</span>
           </div>
-          <span className="text-base font-semibold tracking-tight">Knobase</span>
+          <span className="text-base font-semibold tracking-tight">
+            Knobase
+          </span>
         </a>
 
         {/* Desktop Nav */}
@@ -36,14 +38,6 @@ export function Navigation() {
               {link.label}
             </a>
           ))}
-          <a
-            href="https://knobase.ai"
-            className="text-sm text-[#650BD8] transition-colors hover:text-[#5209b0]"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Looking for Knobase AI (no-code agents)? →
-          </a>
         </div>
 
         {/* Desktop CTA */}
@@ -94,14 +88,6 @@ export function Navigation() {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="https://knobase.ai"
-                className="rounded-md px-3 py-2 text-sm text-[#650BD8] hover:bg-neutral-50"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Looking for Knobase AI? →
-              </a>
               <div className="mt-3 flex flex-col gap-2 border-t border-neutral-100 pt-3">
                 <a
                   href="#"
