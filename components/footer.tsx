@@ -18,6 +18,12 @@ const footerNav = {
     { label: "Careers", href: "#" },
     { label: "Contact", href: "#" },
   ],
+  Resources: [
+    { label: "Docs", href: "#docs" },
+    { label: "API", href: "#" },
+    { label: "Community", href: "#" },
+    { label: "Templates", href: "/templates" },
+  ],
   Legal: [
     { label: "Privacy", href: "/privacy" },
     { label: "Terms", href: "/terms" },
