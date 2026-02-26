@@ -3,14 +3,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, ArrowRight, Zap } from "lucide-react";
+import { WaitlistModal } from "@/components/waitlist";
 
 const tiers = [
   {
     name: "Free",
     price: { monthly: 0, annual: 0 },
     tagline: "Try Knobase with your OpenClaw agent",
-    cta: "Start free",
-    ctaHref: "#",
+    cta: "Join Waitlist",
+    ctaHref: "/#waitlist",
     highlight: false,
     features: [
       "1 human member",
@@ -29,8 +30,8 @@ const tiers = [
     name: "Plus",
     price: { monthly: 9.99, annual: 7.99 },
     tagline: "For growing teams",
-    cta: "Start 14-day trial",
-    ctaHref: "#",
+    cta: "Join Waitlist",
+    ctaHref: "/#waitlist",
     highlight: true,
     badge: "Most popular",
     features: [
@@ -51,8 +52,8 @@ const tiers = [
     name: "Business",
     price: { monthly: 29.99, annual: 23.99 },
     tagline: "For organizations",
-    cta: "Start 14-day trial",
-    ctaHref: "#",
+    cta: "Join Waitlist",
+    ctaHref: "/#waitlist",
     highlight: false,
     features: [
       "Unlimited human members",
@@ -72,7 +73,7 @@ const tiers = [
     price: { monthly: null, annual: null },
     tagline: "For large-scale deployments",
     cta: "Contact sales",
-    ctaHref: "#",
+    ctaHref: "/#waitlist",
     highlight: false,
     features: [
       "Unlimited human members",
@@ -102,6 +103,7 @@ const fadeUp = {
 
 export function Pricing() {
   const [annual, setAnnual] = useState(false);
+  const [showWaitlist, setShowWaitlist] = useState(false);
 
   return (
     <section
@@ -236,8 +238,8 @@ export function Pricing() {
               </ul>
 
               {/* CTA */}
-              <a
-                href={tier.ctaHref}
+              <button
+                onClick={() => setShowWaitlist(true)}
                 className={`group inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors ${
                   tier.highlight
                     ? "bg-[#650BD8] text-white hover:bg-[#5209b0]"
@@ -253,7 +255,7 @@ export function Pricing() {
                     className="transition-transform group-hover:translate-x-0.5"
                   />
                 )}
-              </a>
+              </button>
             </motion.div>
           ))}
         </div>
@@ -288,6 +290,7 @@ export function Pricing() {
           </div>
         </motion.div>
       </div>
+      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </section>
   );
 }

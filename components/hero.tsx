@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Bot, MousePointer2 } from "lucide-react";
+import { WaitlistModal } from "@/components/waitlist";
 
 const presenceAvatars = [
   { label: "You", color: "#650BD8", cursor: true },
@@ -10,6 +12,8 @@ const presenceAvatars = [
 ];
 
 export function Hero() {
+  const [showWaitlist, setShowWaitlist] = useState(false);
+
   return (
     <section className="relative overflow-hidden px-4 pt-20 pb-24 sm:px-6 sm:pt-28 sm:pb-32 lg:px-8">
       {/* Subtle top border gradient */}
@@ -50,16 +54,16 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href="#"
+            <button
+              onClick={() => setShowWaitlist(true)}
               className="group inline-flex items-center gap-2 rounded-lg bg-[#650BD8] px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#5209b0]"
             >
-              Start collaborating — Free
+              Join the Waitlist
               <ArrowRight
                 size={17}
                 className="transition-transform group-hover:translate-x-0.5"
               />
-            </a>
+            </button>
             <a
               href="#features"
               className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 px-6 py-3 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-50"
@@ -147,7 +151,7 @@ export function Hero() {
                         <div className="flex items-center gap-1 rounded bg-[#10b981] px-1.5 py-0.5">
                           <Bot size={9} className="text-white" />
                           <span className="text-[9px] font-medium text-white">
-                            @claw
+                            @openclaw
                           </span>
                         </div>
                       </div>
@@ -161,7 +165,7 @@ export function Hero() {
                         <div className="h-3 w-24 rounded bg-neutral-100" />
                         <div className="inline-flex items-center gap-1 rounded-md border border-[#650BD8]/30 bg-[#650BD8]/5 px-2 py-0.5 text-[10px] font-medium text-[#650BD8]">
                           <MousePointer2 size={9} />
-                          @claw
+                          @openclaw
                         </div>
                         <div className="h-3 w-20 rounded bg-neutral-100" />
                       </div>
@@ -172,7 +176,7 @@ export function Hero() {
                           <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#650BD8]/10">
                             <Bot size={11} className="text-[#650BD8]" />
                           </div>
-                          <span>@claw is writing...</span>
+                          <span>@openclaw is writing...</span>
                         </div>
                         <p className="mt-1.5 max-w-[180px] text-[10px] leading-relaxed text-neutral-500">
                           Drafting the API spec section based on your meeting
@@ -204,6 +208,7 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
+      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </section>
   );
 }

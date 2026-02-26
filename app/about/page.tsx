@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -22,6 +23,7 @@ import {
 } from "lucide-react";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { WaitlistModal } from "@/components/waitlist";
 
 /* ─────────────────────────────────────────
    Fade-up animation helper
@@ -79,7 +81,7 @@ const agentTraits = [
   {
     icon: AtSign,
     title: "A mention",
-    desc: "@claw, just like @sarah",
+    desc: "@openclaw, just like @sarah",
   },
   {
     icon: MessageSquare,
@@ -175,6 +177,8 @@ const stats = [
    Page
 ───────────────────────────────────────── */
 export default function AboutPage() {
+  const [showWaitlist, setShowWaitlist] = useState(false);
+
   return (
     <main className="min-h-screen bg-white">
       <Navigation />
@@ -220,16 +224,16 @@ export default function AboutPage() {
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href="#"
+              <button
+                onClick={() => setShowWaitlist(true)}
                 className="group inline-flex items-center gap-2 rounded-lg bg-[#650BD8] px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#5209b0]"
               >
-                Start collaborating — Free
+                Join the Waitlist
                 <ArrowRight
                   size={17}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
-              </a>
+              </button>
               <a
                 href="#philosophy"
                 className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 px-6 py-3 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-50"
@@ -806,18 +810,18 @@ export default function AboutPage() {
               </p>
 
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <a
-                  href="#"
+                <button
+                  onClick={() => setShowWaitlist(true)}
                   className="group inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-base font-medium text-[#650BD8] transition-colors hover:bg-neutral-100"
                 >
-                  Start free — no card required
+                  Join the Waitlist
                   <ArrowRight
                     size={17}
                     className="transition-transform group-hover:translate-x-0.5"
                   />
-                </a>
+                </button>
                 <a
-                  href="#"
+                  href="#philosophy"
                   className="inline-flex items-center rounded-lg border border-white/25 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-white/10"
                 >
                   Read our principles
@@ -845,6 +849,7 @@ export default function AboutPage() {
       </section>
 
       <Footer />
+      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </main>
   );
 }

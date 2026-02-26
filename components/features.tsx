@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, Bot, AtSign, Cloud, Building2 } from "lucide-react";
+import { WaitlistModal } from "@/components/waitlist";
 
 /* ─────────────────────────────────────────
    Inline UI Mockups
@@ -25,7 +27,7 @@ function MockInvite() {
     },
     {
       initials: "",
-      name: "@claw",
+      name: "@openclaw",
       sub: "AI Agent",
       color: "#10b981",
       isAgent: true,
@@ -115,7 +117,7 @@ function MockMention() {
               <Bot size={10} className="text-white" />
             </div>
             <span className="text-[11px] font-semibold text-[#10b981]">
-              @claw is responding…
+              @openclaw is responding…
             </span>
           </div>
           <div className="space-y-1.5">
@@ -150,7 +152,7 @@ function MockPresence() {
           },
           {
             label: "",
-            name: "@claw",
+            name: "@openclaw",
             loc: "Section 3 → Writing…",
             color: "#10b981",
             isAgent: true,
@@ -194,7 +196,7 @@ function MockPresence() {
           <div className="h-3 w-px bg-[#10b981]" />
           <div className="flex items-center gap-1 rounded bg-[#10b981]/15 px-1.5 py-0.5">
             <Bot size={8} className="text-[#10b981]" />
-            <span className="text-[9px] font-medium text-[#10b981]">@claw</span>
+            <span className="text-[9px] font-medium text-[#10b981]">@openclaw</span>
           </div>
         </div>
         <div className="h-2 w-3/4 rounded bg-neutral-100" />
@@ -205,7 +207,7 @@ function MockPresence() {
 
 function MockIntegrations() {
   const agents = [
-    { name: "@claw", origin: "OpenClaw", color: "#10b981", initials: "" },
+    { name: "@openclaw", origin: "OpenClaw", color: "#10b981", initials: "" },
     { name: "@aria", origin: "Knobase AI", color: "#650BD8", initials: "" },
     { name: "@scout", origin: "Custom build", color: "#f59e0b", initials: "" },
   ];
@@ -281,8 +283,8 @@ const featureRows = [
   {
     step: "02",
     tag: "@Mention",
-    headline: "@claw and chat in context.",
-    body: "Type @claw anywhere in your document and your agent responds right there — no tab-switching, no copy-pasting. Context-aware. Instant. Like a DM, but inside your actual work.",
+    headline: "@openclaw and chat in context.",
+    body: "Type @openclaw anywhere in your document and your agent responds right there — no tab-switching, no copy-pasting. Context-aware. Instant. Like a DM, but inside your actual work.",
     points: [
       "Inline AI commands without leaving your flow",
       "Agent sees the full document context",
@@ -291,6 +293,7 @@ const featureRows = [
     ],
     imageRight: true,
     Mockup: MockMention,
+    link: { href: "/openclaw", label: "Learn how to connect your OpenClaw agent" },
   },
   {
     step: "03",
@@ -362,7 +365,7 @@ export function Features() {
         {/* Alternating feature rows */}
         <div className="space-y-28">
           {featureRows.map(
-            ({ step, tag, headline, body, points, imageRight, Mockup }) => (
+            ({ step, tag, headline, body, points, imageRight, Mockup, link }) => (
               <motion.div
                 key={step}
                 initial="hidden"
@@ -388,6 +391,17 @@ export function Features() {
                   >
                     {headline}
                   </h3>
+                  {link && (
+                    <a
+                      href={link.href}
+                      className="inline-flex items-center gap-1.5 mt-2 text-sm font-medium text-[#650BD8] hover:text-[#5209b0] transition-colors"
+                    >
+                      {link.label}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  )}
                   <p className="mt-4 text-[15px] leading-relaxed text-neutral-500">
                     {body}
                   </p>
@@ -447,6 +461,8 @@ const sharedBullets = [
 ];
 
 export function Hosting() {
+  const [showWaitlist, setShowWaitlist] = useState(false);
+
   return (
     <section
       id="hosting"
@@ -507,11 +523,11 @@ export function Hosting() {
                 </li>
               ))}
             </ul>
-            <a
-              href="#"
+            <button
+              onClick={() => setShowWaitlist(true)}
               className="group mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-[#650BD8] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#5209b0]"
             >
-              Start Free
+              Join the Waitlist
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="15"
@@ -526,7 +542,7 @@ export function Hosting() {
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
+            </button>
           </motion.div>
 
           {/* Self-hosted */}
@@ -564,12 +580,12 @@ export function Hosting() {
                 </li>
               ))}
             </ul>
-            <a
-              href="#"
+            <button
+              onClick={() => setShowWaitlist(true)}
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-lg border border-neutral-200 px-5 py-3 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-50"
             >
               Contact Sales
-            </a>
+            </button>
           </motion.div>
         </div>
 
@@ -602,6 +618,7 @@ export function Hosting() {
           </div>
         </motion.div>
       </div>
+      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </section>
   );
 }

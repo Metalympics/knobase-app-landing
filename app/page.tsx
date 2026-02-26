@@ -3,6 +3,8 @@ import { Hero } from "@/components/hero";
 import { Features, Hosting } from "@/components/features";
 import { Pricing } from "@/components/pricing";
 import { FAQ } from "@/components/faq";
+import { CTA } from "@/components/cta";
+import { Waitlist } from "@/components/waitlist";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
@@ -14,6 +16,8 @@ export default function Home() {
       <Hosting />
       <Pricing />
       <FAQ />
+      <CTA />
+      <Waitlist />
       <Footer />
     </main>
   );

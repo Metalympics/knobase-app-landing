@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Minus, Plus, ArrowRight, Zap, Bot } from "lucide-react";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { WaitlistModal } from "@/components/waitlist";
 
 /* ─────────────────────────────────────────
    Data
@@ -15,9 +16,9 @@ const tiers = [
     name: "Free",
     price: { monthly: 0, annual: 0 },
     tagline: "Try Knobase with your OpenClaw agent",
-    cta: "Start free",
+    cta: "Join Waitlist",
     ctaNote: "No credit card required",
-    ctaHref: "#",
+    ctaHref: "/#waitlist",
     highlight: false,
     features: [
       "1 human member",
@@ -36,9 +37,9 @@ const tiers = [
     name: "Plus",
     price: { monthly: 9.99, annual: 7.99 },
     tagline: "For growing teams",
-    cta: "Start 14-day trial",
+    cta: "Join Waitlist",
     ctaNote: "No credit card required",
-    ctaHref: "#",
+    ctaHref: "/#waitlist",
     highlight: true,
     badge: "Most popular",
     features: [
@@ -59,9 +60,9 @@ const tiers = [
     name: "Business",
     price: { monthly: 29.99, annual: 23.99 },
     tagline: "For organizations",
-    cta: "Start 14-day trial",
+    cta: "Join Waitlist",
     ctaNote: "No credit card required",
-    ctaHref: "#",
+    ctaHref: "/#waitlist",
     highlight: false,
     features: [
       "Unlimited human members",
@@ -84,7 +85,7 @@ const tiers = [
     tagline: "For large-scale deployments",
     cta: "Contact sales",
     ctaNote: "Custom contract & SLA",
-    ctaHref: "#",
+    ctaHref: "/#waitlist",
     highlight: false,
     features: [
       "Unlimited human members",
@@ -413,6 +414,7 @@ function FAQItem({
 
 export default function PricingPage() {
   const [annual, setAnnual] = useState(false);
+  const [showWaitlist, setShowWaitlist] = useState(false);
 
   return (
     <main className="min-h-screen bg-white">
@@ -571,8 +573,8 @@ export default function PricingPage() {
 
                 {/* CTA */}
                 <div className="space-y-2">
-                  <a
-                    href={tier.ctaHref}
+                  <button
+                    onClick={() => setShowWaitlist(true)}
                     className={`group inline-flex w-full items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors ${
                       tier.highlight
                         ? "bg-[#650BD8] text-white hover:bg-[#5209b0]"
@@ -586,7 +588,7 @@ export default function PricingPage() {
                         className="transition-transform group-hover:translate-x-0.5"
                       />
                     )}
-                  </a>
+                  </button>
                   <p className="text-center text-[11px] text-neutral-400">
                     {tier.ctaNote}
                   </p>
@@ -864,31 +866,32 @@ export default function PricingPage() {
               Ready to collaborate with AI?
             </h2>
             <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-neutral-500">
-              Start free. No credit card required.
+              Join the waitlist — no credit card required.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href="#"
+              <button
+                onClick={() => setShowWaitlist(true)}
                 className="group inline-flex items-center gap-2 rounded-lg bg-[#650BD8] px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#5209b0]"
               >
-                Start free
+                Join the Waitlist
                 <ArrowRight
                   size={16}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
-              </a>
-              <a
-                href="#"
+              </button>
+              <button
+                onClick={() => setShowWaitlist(true)}
                 className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 px-6 py-3 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-50"
               >
                 Contact sales
-              </a>
+              </button>
             </div>
           </motion.div>
         </div>
       </section>
 
       <Footer />
+      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </main>
   );
 }

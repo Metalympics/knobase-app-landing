@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -25,6 +26,7 @@ import {
 } from "lucide-react";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { WaitlistModal } from "@/components/waitlist";
 
 /* ─────────────────────────────────────────
    Helpers
@@ -429,6 +431,8 @@ const faqs = [
    Page
 ───────────────────────────────────────── */
 export default function OpenClawPage() {
+  const [showWaitlist, setShowWaitlist] = useState(false);
+
   return (
     <main className="min-h-screen bg-white">
       <Navigation />
@@ -482,16 +486,16 @@ export default function OpenClawPage() {
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href="#"
+              <button
+                onClick={() => setShowWaitlist(true)}
                 className="group inline-flex items-center gap-2 rounded-lg bg-[#650BD8] px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#5209b0]"
               >
-                Invite @openclaw now — Free
+                Join the Waitlist
                 <ArrowRight
                   size={17}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
-              </a>
+              </button>
               <a
                 href="#how-it-works"
                 className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 px-6 py-3 text-base font-medium text-neutral-700 transition-colors hover:bg-neutral-50"
@@ -869,16 +873,16 @@ export default function OpenClawPage() {
                 Start collaborating with your AI agent in real-time.
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <a
-                  href="#"
+                <button
+                  onClick={() => setShowWaitlist(true)}
                   className="group inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-base font-medium text-[#650BD8] transition-colors hover:bg-neutral-100"
                 >
-                  Invite @openclaw now — Free
+                  Join the Waitlist
                   <ArrowRight
                     size={17}
                     className="transition-transform group-hover:translate-x-0.5"
                   />
-                </a>
+                </button>
               </div>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
                 {[
@@ -901,6 +905,7 @@ export default function OpenClawPage() {
       </section>
 
       <Footer />
+      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </main>
   );
 }
