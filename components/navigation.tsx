@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { WaitlistModal } from "@/components/waitlist";
+import { useWaitlist } from "@/components/waitlist/WaitlistProvider";
 
 const navLinks = [
   { href: "#features", label: "Features" },
@@ -17,7 +17,7 @@ const navLinks = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showWaitlist, setShowWaitlist] = useState(false);
+  const { openWaitlist } = useWaitlist();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/80 backdrop-blur-sm">
@@ -48,7 +48,7 @@ export function Navigation() {
         {/* Desktop CTA */}
         <div className="hidden items-center gap-3 md:flex">
           <button
-            onClick={() => setShowWaitlist(true)}
+            onClick={() => openWaitlist()}
             className="rounded-lg bg-[#650BD8] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#5209b0]"
           >
             Join Waitlist
@@ -90,7 +90,7 @@ export function Navigation() {
               <div className="mt-3 flex flex-col gap-2 border-t border-neutral-100 pt-3">
                 <button
                   className="rounded-lg bg-[#650BD8] px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-[#5209b0]"
-                  onClick={() => { setIsOpen(false); setShowWaitlist(true); }}
+                  onClick={() => { setIsOpen(false); openWaitlist(); }}
                 >
                   Join Waitlist
                 </button>
@@ -99,7 +99,6 @@ export function Navigation() {
           </motion.div>
         )}
       </AnimatePresence>
-      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </header>
   );
 }

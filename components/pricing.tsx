@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, ArrowRight, Zap } from "lucide-react";
-import { WaitlistModal } from "@/components/waitlist";
+import { useWaitlist } from "@/components/waitlist/WaitlistProvider";
 
 const tiers = [
   {
@@ -103,7 +103,7 @@ const fadeUp = {
 
 export function Pricing() {
   const [annual, setAnnual] = useState(false);
-  const [showWaitlist, setShowWaitlist] = useState(false);
+  const { openWaitlist } = useWaitlist();
 
   return (
     <section
@@ -239,7 +239,7 @@ export function Pricing() {
 
               {/* CTA */}
               <button
-                onClick={() => setShowWaitlist(true)}
+                onClick={() => openWaitlist()}
                 className={`group inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors ${
                   tier.highlight
                     ? "bg-[#650BD8] text-white hover:bg-[#5209b0]"
@@ -290,7 +290,6 @@ export function Pricing() {
           </div>
         </motion.div>
       </div>
-      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </section>
   );
 }

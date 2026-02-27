@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Bot, MousePointer2 } from "lucide-react";
-import { WaitlistModal } from "@/components/waitlist";
+import { useWaitlist } from "@/components/waitlist/WaitlistProvider";
 
 const presenceAvatars = [
   { label: "You", color: "#650BD8", cursor: true },
@@ -12,7 +11,7 @@ const presenceAvatars = [
 ];
 
 export function Hero() {
-  const [showWaitlist, setShowWaitlist] = useState(false);
+  const { openWaitlist } = useWaitlist();
 
   return (
     <section className="relative overflow-hidden px-4 pt-20 pb-24 sm:px-6 sm:pt-28 sm:pb-32 lg:px-8">
@@ -55,7 +54,7 @@ export function Hero() {
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <button
-              onClick={() => setShowWaitlist(true)}
+              onClick={() => openWaitlist()}
               className="group inline-flex items-center gap-2 rounded-lg bg-[#650BD8] px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#5209b0]"
             >
               Join the Waitlist
@@ -208,7 +207,6 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
-      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </section>
   );
 }

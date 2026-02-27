@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Zap, Users } from "lucide-react";
-import { WaitlistModal } from "@/components/waitlist";
+import { useWaitlist } from "@/components/waitlist/WaitlistProvider";
 
 const trustBadges = [
   { icon: Zap, label: "Built for OpenClaw" },
@@ -12,7 +11,7 @@ const trustBadges = [
 ];
 
 export function CTA() {
-  const [showWaitlist, setShowWaitlist] = useState(false);
+  const { openWaitlist } = useWaitlist();
 
   return (
     <section className="border-t border-neutral-200 px-4 py-24 sm:px-6 lg:px-8">
@@ -45,7 +44,7 @@ export function CTA() {
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <button
-                onClick={() => setShowWaitlist(true)}
+                onClick={() => openWaitlist()}
                 className="group inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-base font-medium text-[#650BD8] transition-colors hover:bg-neutral-100"
               >
                 Join the Waitlist
@@ -68,7 +67,6 @@ export function CTA() {
           </div>
         </motion.div>
       </div>
-      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </section>
   );
 }
