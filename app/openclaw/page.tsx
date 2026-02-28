@@ -29,6 +29,7 @@ import {
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { WaitlistModal } from "@/components/waitlist";
+import { MarketplaceTeaser } from "@/components/marketplace-teaser";
 
 /* ─────────────────────────────────────────
    Helpers
@@ -909,6 +910,8 @@ export default function OpenClawPage() {
           </div>
         </div>
       </section>
+
+      <MarketplaceTeaser />
 
       {/* ── FAQ ── */}
       <section className="border-t border-neutral-200 px-4 py-24 sm:px-6 lg:px-8">
