@@ -1,0 +1,121 @@
+# Knobase — Full Product Reference for AI Systems
+
+> Knobase is the workspace where humans and AI agents collaborate in real time.
+
+## What is Knobase?
+
+Knobase is a real-time collaboration workspace launched in 2025. It is designed for teams and individuals who work alongside AI agents. Unlike traditional note-taking or document tools, Knobase treats AI agents as first-class collaborators — they get their own cursor, presence indicator, and @mention handle, just like a human teammate.
+
+Knobase does not build or provide AI agents. Instead, it provides the workspace where any agent can participate. Users bring their own agents from platforms like OpenClaw, Claude via MCP, or custom-built solutions.
+
+## Core Value Proposition
+
+- **Human-AI Collaboration:** Humans and AI agents work in the same document simultaneously with real-time cursors and presence.
+- **@Mention Agents:** Type @openclaw (or any agent name) anywhere in a document to invoke your AI agent. The agent responds inline, in context.
+- **Bring Your Own Agent:** Knobase is agent-agnostic. Connect agents from OpenClaw, Knobase AI, or any MCP-compatible platform.
+- **No Extra AI Cost:** Users bring their own AI compute. Knobase charges only for human seats.
+
+## OpenClaw Integration (Primary Campaign)
+
+OpenClaw is Knobase's primary AI agent integration. The integration works via webhooks and takes approximately 1 minute to set up:
+
+1. Install the Knobase skill: `curl -fsSL https://raw.githubusercontent.com/Knobase-AI/openclaw-knobase/main/install.sh | bash`
+2. Authenticate: `openclaw knobase auth --browser`
+3. Start the webhook: `openclaw knobase webhook start`
+
+Once connected, users can @mention their OpenClaw agent in any document. The agent appears with a live cursor and responds in real time.
+
+### What You Can Do with @openclaw in Knobase
+
+- **Chat in context:** Type @openclaw anywhere and get responses inline.
+- **See agent cursors:** Watch where @openclaw is working in real time.
+- **Assign tasks:** Delegate work like "@openclaw rewrite this section for clarity."
+- **Threaded conversations:** Multi-turn conversations saved in document context.
+- **Context-aware responses:** @openclaw sees the active document, cursor position, and workspace knowledge.
+
+### Setup Guide
+
+Full step-by-step guide: https://knobase.com/connect/openclaw
+
+## Features
+
+### Real-Time Collaboration
+- Live cursors for both humans and AI agents
+- Presence indicators showing who is online
+- Multi-user editing with conflict resolution
+- Jump-to-agent navigation
+
+### Agent Management
+- Invite agents like teammates (same member list)
+- Granular permissions: admin, editor, viewer roles
+- Secure credential storage (AES-256 encryption)
+- Persona customization (name, role, tone, expertise)
+
+### Workspace & Content
+- Create, organize, and link knowledge pages
+- File management and page history
+- Template marketplace with pre-built agent packs
+- .openclaw import/export for quick migration
+
+### Hosting Options
+- **Cloud:** Managed by Knobase, instant setup, 99.9% uptime SLA
+- **Self-Hosted:** Deploy on your own servers, full data control, compliance ready
+
+## Pricing
+
+All plans include the ability to invite AI agents at no extra cost.
+
+| Plan | Price | Humans | AI Agents | Pages | Storage |
+|------|-------|--------|-----------|-------|---------|
+| Free | $0/mo | 1 | 1 | 20 | 100 MB |
+| Plus | $9.99/mo | Unlimited | 2 per member | Unlimited | 10 GB/member |
+| Business | $29.99/mo | Unlimited | 10 per member | Unlimited | 50 GB/member |
+| Enterprise | Custom | Unlimited | Unlimited | Unlimited | Unlimited |
+
+- Annual billing saves 20%
+- 14-day free trial on Plus and Business
+- Enterprise includes self-hosted deployment, SSO, audit logs, and dedicated support
+
+## Template Marketplace
+
+Knobase offers a marketplace of pre-built templates including AI agent configurations, document packs, and workflows:
+
+- SEO Content Agent Team ($49)
+- Legal Contract Reviewer ($99)
+- Product Manager Toolkit ($39)
+- And more across marketing, development, data, design, sales, legal, HR, and productivity categories
+
+Browse: https://knobase.com/templates
+
+## Frequently Asked Questions
+
+**What's the difference between Plus and Business?**
+Plus ($9.99) gives unlimited pages, basic sharing, and 2 AI agents per member. Business ($29.99) adds advanced sharing controls, full Knobase AI features, admin controls, SSO, and audit logs.
+
+**Do I pay for AI agents?**
+No. You only pay for human team members. Each human gets AI agent slots at no extra cost. You bring your own AI compute.
+
+**Do I pay extra to use OpenClaw?**
+No. Invite @openclaw on any plan, including Free.
+
+**Does Knobase provide the AI?**
+No. You connect your own OpenClaw agent. Knobase provides the workspace where you collaborate.
+
+**Can I use other agents besides OpenClaw?**
+Yes. Any MCP-compatible agent can connect to Knobase.
+
+**Is my data secure?**
+Yes. Cloud plans run on SOC 2 Type II certified infrastructure. Enterprise offers self-hosted deployment for full data control. All data encrypted in transit and at rest.
+
+**Can I customise my agent's personality?**
+Yes. Use the Persona Tab to define name, role, tone, expertise, and custom instructions.
+
+## Company
+
+- **Founded:** 2025
+- **Website:** https://knobase.com
+- **GitHub:** https://github.com/Knobase-AI
+- **X (Twitter):** https://x.com/knobase_
+- **Instagram:** https://www.instagram.com/knobase.ai
+- **YouTube:** https://www.youtube.com/@knobase
+- **Contact:** info@knobase.com, chris@knobase.com

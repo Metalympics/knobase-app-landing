@@ -8,6 +8,37 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
+      // Explicitly allow AI crawlers for AIO visibility
+      {
+        userAgent: "GPTBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "ChatGPT-User",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "PerplexityBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "ClaudeBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Applebot-Extended",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "GoogleOther",
+        allow: "/",
+        disallow: ["/api/"],
+      },
     ],
     sitemap: "https://knobase.com/sitemap.xml",
   };

@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero";
 import { Features, Hosting } from "@/components/features";
 // import { Pricing } from "@/components/pricing"; // hidden during waitlist period
 // import { FAQ } from "@/components/faq"; // hidden during waitlist period
+import { Journey } from "@/components/journey";
 import { CTA } from "@/components/cta";
 import { Waitlist } from "@/components/waitlist";
 import { Footer } from "@/components/footer";
@@ -74,6 +75,7 @@ export default function Home() {
       <Hosting />
       {/* <Pricing /> hidden during waitlist period */}
       {/* <FAQ /> hidden during waitlist period */}
+      <Journey />
       <CTA />
       <Waitlist />
       <Footer />

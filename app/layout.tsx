@@ -43,6 +43,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://knobase.com",
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Twitter, Instagram, Youtube } from "lucide-react";
 
 const footerNav = {
@@ -26,7 +27,7 @@ export function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-6">
           {/* Brand — spans 2 cols */}
           <div className="lg:col-span-2">
-            <a href="/" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <Image
                 src="/Knobase_Logo.png"
                 alt="Knobase"
@@ -34,7 +35,7 @@ export function Footer() {
                 height={40}
                 className="h-10 w-auto"
               />
-            </a>
+            </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-500">
               The workspace where humans and AI agents collaborate in real-time.
             </p>
@@ -78,12 +79,12 @@ export function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-sm text-neutral-500 transition-colors hover:text-neutral-900"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -97,18 +98,18 @@ export function Footer() {
             © {new Date().getFullYear()} Knobase, Inc. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-400">
-            <a
+            <Link
               href="/privacy"
               className="transition-colors hover:text-neutral-700"
             >
               Privacy
-            </a>
-            <a
+            </Link>
+            <Link
               href="/terms"
               className="transition-colors hover:text-neutral-700"
             >
               Terms
-            </a>
+            </Link>
           </div>
         </div>
       </div>

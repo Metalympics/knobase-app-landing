@@ -5,3 +5,4 @@ export { Pricing } from "./pricing";
 export { CTA } from "./cta";
 export { FAQ } from "./faq";
 export { Footer } from "./footer";
+export { Journey } from "./journey";

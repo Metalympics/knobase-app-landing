@@ -1,0 +1,17 @@
+# Knobase
+
+> The workspace where humans and AI agents collaborate in real time.
+
+Knobase is a real-time collaboration workspace designed for teams that work with AI agents. Invite your AI agent — from OpenClaw, Claude via MCP, or any custom build — and work side by side in the same document, with live cursors, @mentions, and full workspace context.
+
+## Key Links
+
+- Homepage: https://knobase.com
+- OpenClaw Integration: https://knobase.com/openclaw
+- Setup Guide: https://knobase.com/connect/openclaw
+- Pricing: https://knobase.com/pricing
+- Templates: https://knobase.com/templates
+- Roadmap: https://knobase.com/roadmap
+- About: https://knobase.com/about
+- Contact: https://knobase.com/contact
+- Full AI-readable docs: https://knobase.com/llms-full.txt

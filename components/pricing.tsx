@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Check, ArrowRight, Zap } from "lucide-react";
 import { useWaitlist } from "@/components/waitlist/WaitlistProvider";
 
@@ -244,24 +245,24 @@ export function Pricing() {
                   Coming soon
                 </span>
               ) : (
-              <button
-                onClick={() => openWaitlist()}
-                className={`group inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors ${
-                  tier.highlight
-                    ? "bg-[#650BD8] text-white hover:bg-[#5209b0]"
-                    : tier.name === "Enterprise"
-                      ? "border border-neutral-200 text-neutral-700 hover:bg-neutral-50"
-                      : "border border-neutral-200 text-neutral-700 hover:bg-neutral-50"
-                }`}
-              >
-                {tier.cta}
-                {tier.highlight && (
-                  <ArrowRight
-                    size={14}
-                    className="transition-transform group-hover:translate-x-0.5"
-                  />
-                )}
-              </button>
+                <button
+                  onClick={() => openWaitlist()}
+                  className={`group inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors ${
+                    tier.highlight
+                      ? "bg-[#650BD8] text-white hover:bg-[#5209b0]"
+                      : tier.name === "Enterprise"
+                        ? "border border-neutral-200 text-neutral-700 hover:bg-neutral-50"
+                        : "border border-neutral-200 text-neutral-700 hover:bg-neutral-50"
+                  }`}
+                >
+                  {tier.cta}
+                  {tier.highlight && (
+                    <ArrowRight
+                      size={14}
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
+                  )}
+                </button>
               )}
             </motion.div>
           ))}
@@ -288,12 +289,12 @@ export function Pricing() {
               <Check size={14} className="text-[#650BD8]" strokeWidth={2.5} />
               No credit card for Free plan.
             </span>
-            <a
+            <Link
               href="/pricing"
               className="font-medium text-[#650BD8] underline underline-offset-2 hover:text-[#5209b0]"
             >
               See full comparison →
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

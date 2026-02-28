@@ -144,7 +144,7 @@ const commitments = [
     n: "02",
     icon: Eye,
     title: "Transparency by default",
-    desc: "If you can't see what your agent is doing, you can't trust it. Every feature we build prioritises visibility.",
+    desc: "If you can't see what your agent is doing, you can't trust it. Every feature we build prioritizes visibility.",
   },
   {
     n: "03",
@@ -168,8 +168,8 @@ const commitments = [
 
 const stats = [
   { value: "Early access", label: "Waitlist now open" },
-  { value: "MCP", label: "Agent protocol support" },
-  { value: "3 commands", label: "To connect OpenClaw" },
+  { value: "1,000+", label: "Knobase AI users" },
+  { value: "16,000+", label: "AI conversations" },
   { value: "Top 30", label: "Alibaba Jumpstarter 2026" },
 ];
 
@@ -490,7 +490,7 @@ export default function AboutPage() {
                 className="mt-2 text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl"
                 style={{ letterSpacing: "-0.02em" }}
               >
-                Organisations Are
+                Organizations Are
                 <br />
                 Sitting on Gold.
               </h2>
@@ -681,6 +681,18 @@ export default function AboutPage() {
             >
               Small. Focused. Obsessed.
             </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-neutral-500">
+              Metrics below are from{" "}
+              <a
+                href="https://knobase.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-neutral-700 hover:text-[#650BD8] transition-colors"
+              >
+                Knobase AI
+              </a>
+              , our first product — already live and growing.
+            </p>
           </FadeUp>
 
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -732,43 +744,32 @@ export default function AboutPage() {
                     Real-world impact
                   </p>
                   <p className="mt-1 text-sm leading-relaxed text-neutral-500">
-                    Schools like{" "}
+                    Our first product,{" "}
                     <span className="font-medium text-neutral-700">
-                      Harrow International
-                    </span>{" "}
-                    and{" "}
-                    <span className="font-medium text-neutral-700">
-                      Harbour School
-                    </span>{" "}
-                    use Knobase to make curriculum AI-accessible. Teams turn
-                    tribal knowledge into collaborative intelligence.
+                      Knobase AI
+                    </span>
+                    , is live and growing — 1,000+ active users and 16,000+ AI
+                    conversations across research, education, healthcare, and
+                    professional services. Workspace is built on that
+                    foundation.
                   </p>
                 </div>
               </div>
             </FadeUp>
           </div>
 
-          {/* Contact strip */}
-          <FadeUp delay={0.1} className="mt-8">
-            <div className="flex flex-wrap items-center justify-center gap-6 rounded-xl border border-neutral-200 bg-white px-8 py-5 shadow-sm shadow-neutral-100 text-sm text-neutral-500">
-              {[
-                { label: "Philosophy", email: "philosophy@knobase.ai" },
-                { label: "Press", email: "press@knobase.ai" },
-                { label: "Careers", email: "careers@knobase.ai" },
-              ].map((c) => (
-                <span key={c.email}>
-                  <span className="font-medium text-neutral-700">
-                    {c.label}:
-                  </span>{" "}
-                  <a
-                    href={`mailto:${c.email}`}
-                    className="text-[#650BD8] hover:underline"
-                  >
-                    {c.email}
-                  </a>
-                </span>
-              ))}
-            </div>
+          <FadeUp delay={0.2} className="mt-8 text-center">
+            <p className="text-sm text-neutral-500">
+              Want to see it in action?{" "}
+              <a
+                href="https://www.knobase.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#650BD8] hover:underline"
+              >
+                Check out Knobase AI →
+              </a>
+            </p>
           </FadeUp>
         </div>
       </section>

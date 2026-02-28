@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -636,7 +637,7 @@ export default function OpenClawPage() {
                       </div>
                     )}
                     {step.connectLink && (
-                      <a
+                      <Link
                         href="/connect/openclaw"
                         className="group mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[#650BD8] transition-colors hover:text-[#5209b0]"
                       >
@@ -655,7 +656,7 @@ export default function OpenClawPage() {
                         >
                           <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
-                      </a>
+                      </Link>
                     )}
                   </div>
 
@@ -697,7 +698,7 @@ export default function OpenClawPage() {
                   you're live.
                 </p>
               </div>
-              <a
+              <Link
                 href="/connect/openclaw"
                 className="group inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#650BD8] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#5209b0]"
               >
@@ -716,7 +717,7 @@ export default function OpenClawPage() {
                 >
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </FadeUp>
         </div>

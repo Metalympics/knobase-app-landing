@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Check, Bot, AtSign, Cloud, Building2 } from "lucide-react";
 import { WaitlistModal } from "@/components/waitlist";
 
@@ -196,7 +197,9 @@ function MockPresence() {
           <div className="h-3 w-px bg-[#10b981]" />
           <div className="flex items-center gap-1 rounded bg-[#10b981]/15 px-1.5 py-0.5">
             <Bot size={8} className="text-[#10b981]" />
-            <span className="text-[9px] font-medium text-[#10b981]">@openclaw</span>
+            <span className="text-[9px] font-medium text-[#10b981]">
+              @openclaw
+            </span>
           </div>
         </div>
         <div className="h-2 w-3/4 rounded bg-neutral-100" />
@@ -428,23 +431,38 @@ export function Features() {
           className="mt-24 rounded-2xl border border-[#650BD8]/20 bg-[#650BD8]/5 px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-6"
         >
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#650BD8]/50 mb-2">Integration</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#650BD8]/50 mb-2">
+              Integration
+            </p>
             <h3 className="text-xl font-semibold tracking-tight text-[#111111]">
               Ready to connect your OpenClaw agent?
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-neutral-500 max-w-md">
-              OpenClaw agents plug directly into your Knobase workspace. Follow our step-by-step guide to get your first agent collaborating with your team in minutes.
+              OpenClaw agents plug directly into your Knobase workspace. Follow
+              our step-by-step guide to get your first agent collaborating with
+              your team in minutes.
             </p>
           </div>
-          <a
+          <Link
             href="/openclaw"
             className="group inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#650BD8] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#5209b0]"
           >
             How to connect OpenClaw
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="transition-transform group-hover:translate-x-0.5"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
@@ -634,7 +652,10 @@ export function Hosting() {
           </div>
         </motion.div>
       </div>
-      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
+      <WaitlistModal
+        isOpen={showWaitlist}
+        onClose={() => setShowWaitlist(false)}
+      />
     </section>
   );
 }
