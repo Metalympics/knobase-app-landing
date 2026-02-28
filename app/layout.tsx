@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import {
+  OrganizationSchema,
+  SoftwareApplicationSchema,
+} from "@/components/structured-data";
 
 const jakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -25,6 +29,9 @@ export const metadata: Metadata = {
     title: "Knobase — The workspace where humans and AI collaborate",
     description: "Real-time collaboration for teams and AI agents. Built for OpenClaw.",
   },
+  alternates: {
+    canonical: "https://knobase.com",
+  },
 };
 
 export default function RootLayout({
@@ -34,6 +41,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={jakartaSans.variable}>
+      <head>
+        <OrganizationSchema />
+        <SoftwareApplicationSchema />
+      </head>
       <body
         className="min-h-screen antialiased"
         style={{ fontFamily: 'var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
