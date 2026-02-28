@@ -2,7 +2,10 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { useState, useEffect } from "react";
 import { WaitlistForm } from "../waitlist-form";
+
+const STORAGE_KEY = "knobase_waitlist_submitted";
 
 interface WaitlistModalProps {
   isOpen: boolean;
@@ -10,6 +13,14 @@ interface WaitlistModalProps {
 }
 
 export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "success" || stored === "duplicate") {
+      setSubmitted(true);
+    }
+  }, [isOpen]);
   return (
     <AnimatePresence>
       {isOpen && (
@@ -37,19 +48,21 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               <X size={20} />
             </button>
 
-            <div className="mb-6 text-center">
-              <h2
-                className="text-2xl font-semibold text-[#111111]"
-                style={{ letterSpacing: "-0.02em" }}
-              >
-                Join the Waitlist
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-500">
-                Be the first to experience human-AI collaboration in Knobase.
-              </p>
-            </div>
+            {!submitted && (
+              <div className="mb-6 text-center">
+                <h2
+                  className="text-2xl font-semibold text-[#111111]"
+                  style={{ letterSpacing: "-0.02em" }}
+                >
+                  Join the Waitlist
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-500">
+                  Be the first to experience human-AI collaboration in Knobase.
+                </p>
+              </div>
+            )}
 
-            <WaitlistForm />
+            <WaitlistForm onSubmitted={() => setSubmitted(true)} />
           </motion.div>
         </motion.div>
       )}

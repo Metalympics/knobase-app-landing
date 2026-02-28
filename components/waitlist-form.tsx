@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
+
+const STORAGE_KEY = "knobase_waitlist_submitted";
 
 const ROLES = [
   { value: "developer", label: "Developer" },
@@ -14,15 +16,28 @@ const ROLES = [
   { value: "other", label: "Other" },
 ];
 
-export function WaitlistForm() {
+interface WaitlistFormProps {
+  onSubmitted?: (status: "success" | "duplicate") => void;
+}
+
+export function WaitlistForm({ onSubmitted }: WaitlistFormProps = {}) {
   const [form, setForm] = useState({
     name: "",
     email: "",
     role: "",
     organization: "",
   });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "duplicate">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "duplicate"
+  >("idle");
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "success" || stored === "duplicate") {
+      setStatus(stored);
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,7 +54,11 @@ export function WaitlistForm() {
       const data = await res.json();
 
       if (data.success) {
-        setStatus(data.message === "Already on waitlist" ? "duplicate" : "success");
+        const newStatus =
+          data.message === "Already on waitlist" ? "duplicate" : "success";
+        setStatus(newStatus);
+        localStorage.setItem(STORAGE_KEY, newStatus);
+        onSubmitted?.(newStatus);
       } else {
         setError(data.error || "Something went wrong. Please try again.");
         setStatus("idle");
@@ -62,7 +81,9 @@ export function WaitlistForm() {
           <Check size={28} className="text-[#10b981]" strokeWidth={2.5} />
         </div>
         <h3 className="mt-5 text-xl font-semibold text-[#111111]">
-          {status === "duplicate" ? "You're already on the list!" : "You're on the list!"}
+          {status === "duplicate"
+            ? "You're already on the list!"
+            : "You're on the list!"}
         </h3>
         <p className="mt-2 text-sm text-neutral-500">
           {status === "duplicate"
@@ -123,9 +144,7 @@ export function WaitlistForm() {
         className="w-full rounded-lg border border-neutral-200 bg-white px-4 py-3 text-sm text-[#111111] placeholder:text-neutral-400 transition-colors focus:border-[#650BD8] focus:outline-none focus:ring-1 focus:ring-[#650BD8]/30"
       />
 
-      {error && (
-        <p className="text-center text-sm text-red-500">{error}</p>
-      )}
+      {error && <p className="text-center text-sm text-red-500">{error}</p>}
 
       <button
         type="submit"

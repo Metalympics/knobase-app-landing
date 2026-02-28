@@ -15,12 +15,21 @@ const jakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Knobase — The workspace where humans and AI collaborate",
-  description: "Real-time collaboration for teams and AI agents. Invite colleagues, invite your agent, work side by side. Built for OpenClaw.",
-  keywords: ["AI collaboration", "human AI workspace", "OpenClaw", "real-time editing", "agent workspace", "Knobase"],
+  description:
+    "Real-time collaboration for teams and AI agents. Invite colleagues, invite your agent, work side by side. Built for OpenClaw.",
+  keywords: [
+    "AI collaboration",
+    "human AI workspace",
+    "OpenClaw",
+    "real-time editing",
+    "agent workspace",
+    "Knobase",
+  ],
   metadataBase: new URL("https://knobase.com"),
   openGraph: {
     title: "Knobase — The workspace where humans and AI collaborate",
-    description: "Real-time collaboration for teams and AI agents. Invite colleagues, invite your agent, work side by side. Built for OpenClaw.",
+    description:
+      "Real-time collaboration for teams and AI agents. Invite colleagues, invite your agent, work side by side. Built for OpenClaw.",
     type: "website",
     url: "https://knobase.com",
     siteName: "Knobase",
@@ -28,7 +37,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Knobase — The workspace where humans and AI collaborate",
-    description: "Real-time collaboration for teams and AI agents. Built for OpenClaw.",
+    description:
+      "Real-time collaboration for teams and AI agents. Built for OpenClaw.",
   },
   alternates: {
     canonical: "https://knobase.com",
@@ -48,7 +58,10 @@ export default function RootLayout({
       </head>
       <body
         className="min-h-screen antialiased"
-        style={{ fontFamily: 'var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
+        style={{
+          fontFamily:
+            'var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        }}
         suppressHydrationWarning
       >
         <WaitlistProvider>{children}</WaitlistProvider>

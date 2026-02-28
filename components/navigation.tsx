@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useWaitlist } from "@/components/waitlist/WaitlistProvider";
 
 const navLinks = [
-  { href: "#features", label: "Features" },
-  { href: "/templates", label: "Templates" },
-  { href: "#pricing", label: "Pricing" },
+  { href: "/#features", label: "Features" },
+  // { href: "/templates", label: "Templates" }, // hidden during waitlist period
+  // { href: "#pricing", label: "Pricing" }, // hidden during waitlist period
   { href: "/roadmap", label: "Roadmap" },
   { href: "/about", label: "About" },
   // { href: "#docs", label: "Docs" },
@@ -23,13 +24,15 @@ export function Navigation() {
     <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/80 backdrop-blur-sm">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2.5 shrink-0">
-          <div className="h-8 w-8 rounded-lg bg-[#650BD8] flex items-center justify-center">
-            <span className="text-white text-xs font-bold">K</span>
-          </div>
-          <span className="text-base font-semibold tracking-tight">
-            Knobase
-          </span>
+        <a href="/" className="flex items-center shrink-0">
+          <Image
+            src="/Knobase_Logo.png"
+            alt="Knobase"
+            width={120}
+            height={32}
+            className="h-8 w-auto"
+            priority
+          />
         </a>
 
         {/* Desktop Nav */}
@@ -43,6 +46,19 @@ export function Navigation() {
               {link.label}
             </a>
           ))}
+          <a
+            href="/openclaw"
+            className="inline-flex items-center gap-1.5 rounded-full border border-[#10b981]/30 bg-[#10b981]/8 px-3 py-1 text-sm font-medium text-[#10b981] transition-colors hover:bg-[#10b981]/15"
+          >
+            <Image
+              src="/openclaw.png"
+              alt="OpenClaw"
+              width={14}
+              height={14}
+              className="h-3.5 w-3.5 rounded object-contain"
+            />
+            OpenClaw
+          </a>
         </div>
 
         {/* Desktop CTA */}
@@ -87,10 +103,27 @@ export function Navigation() {
                   {link.label}
                 </a>
               ))}
+              <a
+                href="/openclaw"
+                className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-[#10b981] hover:bg-[#10b981]/5"
+                onClick={() => setIsOpen(false)}
+              >
+                <Image
+                  src="/openclaw.png"
+                  alt="OpenClaw"
+                  width={14}
+                  height={14}
+                  className="h-3.5 w-3.5 rounded object-contain"
+                />
+                OpenClaw
+              </a>
               <div className="mt-3 flex flex-col gap-2 border-t border-neutral-100 pt-3">
                 <button
                   className="rounded-lg bg-[#650BD8] px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-[#5209b0]"
-                  onClick={() => { setIsOpen(false); openWaitlist(); }}
+                  onClick={() => {
+                    setIsOpen(false);
+                    openWaitlist();
+                  }}
                 >
                   Join Waitlist
                 </button>

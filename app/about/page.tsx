@@ -167,9 +167,9 @@ const commitments = [
 ];
 
 const stats = [
-  { value: "1,000+", label: "Teams collaborating" },
-  { value: "300+", label: "AI agents active" },
-  { value: "16,000+", label: "Human–agent conversations" },
+  { value: "Early access", label: "Waitlist now open" },
+  { value: "MCP", label: "Agent protocol support" },
+  { value: "3 commands", label: "To connect OpenClaw" },
   { value: "Top 30", label: "Alibaba Jumpstarter 2026" },
 ];
 
@@ -830,8 +830,8 @@ export default function AboutPage() {
 
               <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
                 {[
-                  { icon: Bot, label: "300+ agents active" },
-                  { icon: Users, label: "1,000+ teams collaborating" },
+                  { icon: Bot, label: "OpenClaw-native" },
+                  { icon: Users, label: "Free during early access" },
                   { icon: Award, label: "Alibaba Jumpstarter Top 30" },
                 ].map((badge) => (
                   <div
@@ -849,7 +849,10 @@ export default function AboutPage() {
       </section>
 
       <Footer />
-      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
+      <WaitlistModal
+        isOpen={showWaitlist}
+        onClose={() => setShowWaitlist(false)}
+      />
     </main>
   );
 }

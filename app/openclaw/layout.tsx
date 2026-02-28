@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Connect OpenClaw to Knobase | Setup in 3 Commands",
+  title: "Knobase × OpenClaw | Your AI Agent, Right Where You Work",
   description:
-    "Connect your OpenClaw agent to Knobase for @openclaw mentions. Copy-paste setup.",
-  keywords: ["OpenClaw", "Knobase", "AI agent", "@mention", "webhook"],
+    "Invite @openclaw to any document and collaborate with your AI agent in real-time. Real-time cursors, @mentions, and full workspace context.",
+  keywords: [
+    "OpenClaw",
+    "Knobase",
+    "AI agent workspace",
+    "@mention AI",
+    "real-time collaboration",
+    "AI teammate",
+  ],
   openGraph: {
-    title: "Connect OpenClaw to Knobase | Setup in 3 Commands",
+    title: "Knobase × OpenClaw | Your AI Agent, Right Where You Work",
     description:
-      "Connect your OpenClaw agent to Knobase for @openclaw mentions. Copy-paste setup.",
+      "Invite @openclaw to any document and collaborate with your AI agent in real-time.",
     type: "website",
   },
 };

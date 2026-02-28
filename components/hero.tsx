@@ -29,10 +29,15 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#650BD8]/20 bg-[#650BD8]/5 px-4 py-1.5 text-sm font-medium text-[#650BD8]"
+            className="mb-8"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#650BD8]" />
-            Built for OpenClaw
+            <a
+              href="/openclaw"
+              className="inline-flex items-center gap-2 rounded-full border border-[#650BD8]/20 bg-[#650BD8]/5 px-4 py-1.5 text-sm font-medium text-[#650BD8] transition-colors hover:bg-[#650BD8]/10"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[#650BD8]" />
+              Built for OpenClaw
+            </a>
           </motion.div>
 
           <h1

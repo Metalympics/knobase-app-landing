@@ -21,7 +21,12 @@ export function WaitlistProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <WaitlistContext.Provider value={{ openWaitlist: () => setIsOpen(true), closeWaitlist: () => setIsOpen(false) }}>
+    <WaitlistContext.Provider
+      value={{
+        openWaitlist: () => setIsOpen(true),
+        closeWaitlist: () => setIsOpen(false),
+      }}
+    >
       {children}
       <WaitlistModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </WaitlistContext.Provider>

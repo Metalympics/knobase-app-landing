@@ -6,8 +6,8 @@ import { useWaitlist } from "@/components/waitlist/WaitlistProvider";
 
 const trustBadges = [
   { icon: Zap, label: "Built for OpenClaw" },
-  { icon: ShieldCheck, label: "SOC 2 compliant" },
-  { icon: Users, label: "1000+ teams collaborating" },
+  { icon: ShieldCheck, label: "No credit card required" },
+  { icon: Users, label: "Free during early access" },
 ];
 
 export function CTA() {
@@ -48,7 +48,10 @@ export function CTA() {
                 className="group inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-base font-medium text-[#650BD8] transition-colors hover:bg-neutral-100"
               >
                 Join the Waitlist
-                <ArrowRight size={17} className="transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight
+                  size={17}
+                  className="transition-transform group-hover:translate-x-0.5"
+                />
               </button>
             </div>
 

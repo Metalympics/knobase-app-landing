@@ -1,33 +1,20 @@
-import { Github, Twitter } from "lucide-react";
+import Image from "next/image";
+import { Twitter, Instagram, Youtube } from "lucide-react";
 
 const footerNav = {
   Product: [
-    { label: "Features", href: "#features" },
-    { label: "Pricing", href: "/pricing" },
+    { label: "Features", href: "/#features" },
     { label: "Roadmap", href: "/roadmap" },
-    { label: "Changelog", href: "#" },
+    { label: "Changelog", href: "/changelog" },
   ],
-  Integrations: [
-    { label: "OpenClaw", href: "/integrations/openclaw" },
-    { label: "ChatGPT", href: "#" },
-    { label: "Claude", href: "#" },
-    { label: "MCP agents", href: "#" },
-  ],
+  Integrations: [{ label: "OpenClaw", href: "/openclaw" }],
   Company: [
     { label: "About", href: "/about" },
-    { label: "Careers", href: "#" },
-    { label: "Contact", href: "#" },
-  ],
-  Resources: [
-    { label: "Docs", href: "#docs" },
-    { label: "API", href: "#" },
-    { label: "Community", href: "#" },
-    { label: "Templates", href: "/templates" },
+    { label: "Contact", href: "/contact" },
   ],
   Legal: [
     { label: "Privacy", href: "/privacy" },
     { label: "Terms", href: "/terms" },
-    { label: "Security", href: "#" },
   ],
 };
 
@@ -39,31 +26,45 @@ export function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-6">
           {/* Brand — spans 2 cols */}
           <div className="lg:col-span-2">
-            <a href="/" className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#650BD8]">
-                <span className="text-xs font-bold text-white">K</span>
-              </div>
-              <span className="text-base font-semibold tracking-tight">
-                Knobase
-              </span>
+            <a href="/" className="flex items-center">
+              <Image
+                src="/Knobase_Logo.png"
+                alt="Knobase"
+                width={160}
+                height={40}
+                className="h-10 w-auto"
+              />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-500">
               The workspace where humans and AI agents collaborate in real-time.
             </p>
             <div className="mt-5 flex gap-3">
               <a
-                href="#"
+                href="https://x.com/knobase_"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-8 w-8 items-center justify-center rounded-md border border-neutral-200 text-neutral-400 transition-colors hover:border-neutral-300 hover:text-neutral-600"
-                aria-label="Twitter"
+                aria-label="X (Twitter)"
               >
                 <Twitter size={15} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/knobase.ai"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-8 w-8 items-center justify-center rounded-md border border-neutral-200 text-neutral-400 transition-colors hover:border-neutral-300 hover:text-neutral-600"
-                aria-label="GitHub"
+                aria-label="Instagram"
               >
-                <Github size={15} />
+                <Instagram size={15} />
+              </a>
+              <a
+                href="https://www.youtube.com/@knobase"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-neutral-200 text-neutral-400 transition-colors hover:border-neutral-300 hover:text-neutral-600"
+                aria-label="YouTube"
+              >
+                <Youtube size={15} />
               </a>
             </div>
           </div>
@@ -107,9 +108,6 @@ export function Footer() {
               className="transition-colors hover:text-neutral-700"
             >
               Terms
-            </a>
-            <a href="#" className="transition-colors hover:text-neutral-700">
-              Security
             </a>
           </div>
         </div>

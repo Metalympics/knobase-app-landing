@@ -74,6 +74,7 @@ const tiers = [
     tagline: "For large-scale deployments",
     cta: "Contact sales",
     ctaHref: "/#waitlist",
+    comingSoon: true,
     highlight: false,
     features: [
       "Unlimited human members",
@@ -238,6 +239,11 @@ export function Pricing() {
               </ul>
 
               {/* CTA */}
+              {tier.comingSoon ? (
+                <span className="inline-flex items-center justify-center gap-2 rounded-lg border border-neutral-200 px-5 py-2.5 text-sm font-medium text-neutral-400 cursor-default select-none">
+                  Coming soon
+                </span>
+              ) : (
               <button
                 onClick={() => openWaitlist()}
                 className={`group inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors ${
@@ -256,6 +262,7 @@ export function Pricing() {
                   />
                 )}
               </button>
+              )}
             </motion.div>
           ))}
         </div>
