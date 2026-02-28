@@ -1,5 +1,24 @@
+import type { Metadata } from "next";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { BreadcrumbSchema } from "@/components/structured-data";
+
+export const metadata: Metadata = {
+  title: "Terms of Service — Knobase",
+  description:
+    "Read the Knobase Terms of Service. Covers account usage, AI agent responsibilities, data ownership, privacy, payment terms, and more.",
+  openGraph: {
+    title: "Terms of Service — Knobase",
+    description:
+      "Knobase Terms of Service — account usage, AI agent responsibilities, and data ownership.",
+    type: "website",
+    url: "https://knobase.com/terms",
+    siteName: "Knobase",
+  },
+  alternates: {
+    canonical: "https://knobase.com/terms",
+  },
+};
 
 const toc = [
   { n: 1, id: "acceptance", label: "Acceptance of Terms" },
@@ -83,6 +102,12 @@ function OL({ items }: { items: React.ReactNode[] }) {
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-white">
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", href: "https://knobase.com" },
+          { name: "Terms of Service", href: "https://knobase.com/terms" },
+        ]}
+      />
       <Navigation />
 
       {/* Header */}

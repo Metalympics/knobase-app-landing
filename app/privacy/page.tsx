@@ -1,5 +1,24 @@
+import type { Metadata } from "next";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { BreadcrumbSchema } from "@/components/structured-data";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy — Knobase",
+  description:
+    "Read the Knobase Privacy Policy. Learn how we collect, use, and protect your data including AI agent interactions, cookies, and international transfers.",
+  openGraph: {
+    title: "Privacy Policy — Knobase",
+    description:
+      "Knobase Privacy Policy — how we handle your data, AI agent interactions, and security.",
+    type: "website",
+    url: "https://knobase.com/privacy",
+    siteName: "Knobase",
+  },
+  alternates: {
+    canonical: "https://knobase.com/privacy",
+  },
+};
 
 const toc = [
   { n: 1, id: "introduction", label: "Introduction" },
@@ -77,6 +96,12 @@ function UL({ items }: { items: React.ReactNode[] }) {
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-white">
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", href: "https://knobase.com" },
+          { name: "Privacy Policy", href: "https://knobase.com/privacy" },
+        ]}
+      />
       <Navigation />
 
       {/* Header */}
